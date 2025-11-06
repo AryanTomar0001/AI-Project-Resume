@@ -1,0 +1,57 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Resume Analyzer 2.0</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>AI Resume Analyzer 2.0</h1>
+      <p class="subtitle">Upload resume → Get role prediction, match score & improvement tips</p>
+    </header>
+
+    <main class="main">
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+
+      <form class="card form" action="/" method="POST" enctype="multipart/form-data">
+        <label class="field">
+          <span>📄 Upload Resume (.pdf / .docx)</span>
+          <input type="file" name="resume" required>
+        </label>
+
+        <label class="field">
+          <span>🧾 Job Description (paste)</span>
+          <textarea name="job_text" placeholder="Paste full job description here..." rows="6"></textarea>
+        </label>
+
+        <label class="field">
+          <span>🧩 Optional: Job Skills (comma-separated)</span>
+          <input type="text" name="job_skills" placeholder="e.g. Python, Flask, SQL, React">
+        </label>
+
+        <div class="actions">
+          <button class="btn" type="submit">🔍 Analyze Resume</button>
+        </div>
+      </form>
+
+      <section class="notes card">
+        <h3>Tips</h3>
+        <ul>
+          <li>For best results provide full job description + skills list.</li>
+          <li>Train the model with more labeled resumes to improve role prediction.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 AI Resume Analyzer | Built with Flask + scikit-learn + spaCy</p>
+    </footer>
+  </div>
+</body>
+</html>

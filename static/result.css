@@ -1,0 +1,214 @@
+/* 🌈 AI Resume Analyzer — Result Page (result.html) */
+:root {
+  --bg-start: #eef7ff;
+  --bg-end: #ffffff;
+  --accent: #2563eb;
+  --accent-2: #06b6d4;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --muted: #6b7280;
+  --text-dark: #0f172a;
+  --radius: 14px;
+  --transition: all 0.25s ease-in-out;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Inter", sans-serif;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px;
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* Main Container */
+.result-container {
+  width: 100%;
+  max-width: 950px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  animation: slideUp 0.4s ease-in;
+}
+
+/* Title */
+h1 {
+  text-align: center;
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* Top Row */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Score */
+.score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.label {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Role Box */
+.role {
+  background: #f9fbff;
+  border-radius: var(--radius);
+  padding: 16px;
+  flex: 1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.role h3 {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.role-text {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Details Section */
+.details {
+  margin-top: 25px;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.details h2 {
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.details p {
+  color: #1e293b;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.missing {
+  background: rgba(245, 158, 11, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.suggestion {
+  background: #ecfdf5;
+  border-left: 4px solid var(--success);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  color: #064e3b;
+  font-weight: 600;
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  margin-top: 24px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+  transition: var(--transition);
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(6, 182, 212, 0.25);
+}
+
+/* Footer */
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .score-circle {
+    width: 90px;
+    height: 90px;
+    font-size: 1.2rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  .top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .details {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-container {
+    padding: 18px;
+  }
+  .back-btn {
+    width: 80%;
+    text-align: center;
+  }
+}

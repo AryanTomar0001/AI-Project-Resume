@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📊 Analysis Result — AI Resume Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+
+<body>
+  <div class="result-container">
+    <h1>📊 Analysis Result</h1>
+
+    <div class="top-row">
+      <!-- 🔵 Match Score -->
+      <div class="score">
+        <div class="score-circle">{{ result.similarity }}%</div>
+        <p class="label">
+          {% if result.similarity >= 80 %}
+            ✅ Excellent Match
+          {% elif result.similarity >= 60 %}
+            ⚡ Good Match
+          {% elif result.similarity >= 40 %}
+            ⚠️ Moderate Match
+          {% else %}
+            ❌ Weak Match
+          {% endif %}
+        </p>
+      </div>
+
+      <!-- 🧠 Predicted Role -->
+      <div class="role">
+        <h3>Predicted Role</h3>
+        {% if result.role_pred %}
+          <p class="role-text">🧠 {{ result.role_pred }} — Confidence: {{ result.role_conf }}%</p>
+        {% else %}
+          <p class="muted">Model not trained yet — Run <code class="code">train_model.py</code> to enable AI predictions.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- 🧩 Detailed Results -->
+    <div class="details card">
+      <h2>Extracted Skills</h2>
+      <p>{{ result.extracted_skills | join(', ') if result.extracted_skills else "None found" }}</p>
+
+      <h2>Job Skills</h2>
+      <p>{{ result.job_skills | join(', ') if result.job_skills else "No job skills provided" }}</p>
+
+      <h2>Missing Skills</h2>
+      <p class="missing">{{ result.missing_skills | join(', ') if result.missing_skills else "None — Great!" }}</p>
+
+      <h2>Suggestions</h2>
+      {% if result.suggestions %}
+        {% for s in result.suggestions %}
+          <p class="suggestion">💡 {{ s }}</p>
+        {% endfor %}
+      {% else %}
+        <p class="muted">No specific suggestions — your resume is already strong 💪</p>
+      {% endif %}
+    </div>
+
+    <a href="/" class="back-btn">⬅️ Analyze Another Resume</a>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 AI Resume Analyzer | Powered by Flask + scikit-learn + spaCy</p>
+  </footer>
+</body>
+</html>

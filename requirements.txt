@@ -1,0 +1,10 @@
+flask==2.2.5
+werkzeug==2.2.3
+pdfminer.six==20221105
+python-docx==0.8.11
+scikit-learn==1.2.2
+pandas==2.0.3
+spacy==3.6.0
+joblib==1.2.0
+sentence-transformers==2.2.2    # optional for semantic upgrade (heavy)
+torch>=1.13.0                    # for sentence-transformers
